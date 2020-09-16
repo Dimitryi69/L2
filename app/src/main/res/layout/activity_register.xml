@@ -35,7 +35,7 @@
                     android:textSize="24sp" />
 
                 <TextView
-                    android:id="@+id/Unit Type:"
+                    android:id="@+id/Unit"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Unit Type:"
@@ -81,14 +81,8 @@
                     android:textAlignment="center">
 
                     <Button
-                        android:id="@+id/back"
-                        android:layout_width="205"
-                        android:layout_height="wrap_content"
-                        android:text="Back" />
-
-                    <Button
                         android:id="@+id/button4"
-                        android:layout_width="205"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="Register" />
 

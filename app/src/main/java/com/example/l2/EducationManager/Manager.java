@@ -120,10 +120,10 @@ public class Manager implements IAction {
             switch (getRandomNumberInRange(1,4))
             {
                 case 1: g = Organizations.Epam; break;
-                case 2: g = Organizations.GloryHL; break;
+                case 2: g = Organizations.GloruHL; break;
                 case 3: g = Organizations.Google; break;
                 case 4: g = Organizations.Tiharb; break;
-                default: g = Organizations.GloryHL; break;
+                default: g = Organizations.GloruHL; break;
             }
             stud.org = g.getOrg();
             temp.add(stud);

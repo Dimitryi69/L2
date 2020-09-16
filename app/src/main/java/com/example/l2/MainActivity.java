@@ -1,7 +1,10 @@
 package com.example.l2;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.DialogInterface;
+import android.content.Intent;
 import android.location.Address;
 import android.os.Bundle;
 import android.util.Log;
@@ -72,6 +75,30 @@ public class MainActivity extends AppCompatActivity {
     {
         RadioButton RadioListener = findViewById(R.id.lis);
         RadioButton RadioStudent = findViewById(R.id.stud);
+        if(RadioListener.isChecked())
+        {
+            Intent intent = new Intent(this, NameInput.class);
+            intent.putExtra("UnitType", "Listener");
+            startActivity(intent);
+        }
+        else if(RadioStudent.isChecked())
+        {
+            Intent intent = new Intent(this, NameInput.class);
+            intent.putExtra("UnitType", "Student");
+            startActivity(intent);
+        }
+        else
+        {
+            AlertDialog.Builder b = new AlertDialog.Builder(this);
+            b.setTitle("Choose one plz").setPositiveButton("No problem bro", new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialogInterface, int i) {
+                Log.d("Log_3","Missing argument");
+            }
+
+            });
+            AlertDialog ad = b.create();
+            ad.show();
+        }
     }
 }
 
