@@ -63,13 +63,13 @@
                     android:textSize="24sp" />
 
                 <CheckBox
-                    android:id="@+id/checkBox2"
+                    android:id="@+id/yes"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Yes" />
 
                 <CheckBox
-                    android:id="@+id/checkBox3"
+                    android:id="@+id/yes2"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Yes, but in second checkbox" />
@@ -84,6 +84,7 @@
                         android:id="@+id/button4"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:onClick="Save"
                         android:text="Register" />
 
                 </LinearLayout>

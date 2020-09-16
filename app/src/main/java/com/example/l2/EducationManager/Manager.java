@@ -58,45 +58,7 @@ public class Manager implements IAction {
     {
         return "Name: "+name;
     }
-    public Stuff createGroup(File filename) throws EduException
-    {
-        Gson g = new Gson();
-        Manager man = new Manager("k");
-        Stuff temp = man.generate(2,2,2);
-        try{
-            FileReader r = new FileReader(filename);
-            char[] buf = new char[(int)filename.length()];
-            r.read(buf);
-            r.close();
-            String s = new String(buf);
-            Type ty = new TypeToken<ArrayList<Person>>(){}.getType();
-            ArrayList<Person> list = (ArrayList<Person>) g.fromJson(s, ty);
 
-            temp.studlist=list;
-            Log.d("Manager","Stuff deserialized");
-        }
-        catch (IOException e){
-            Log.d("kek",e.getMessage());
-        }
-        finally {
-            return temp;
-        }
-    }
-    public void Serialize(ArrayList<Person> saveObject, File file) throws EduException
-    {
-        Gson g = new Gson();
-        String Json = g.toJson(saveObject);
-        File f = new File(file, "latest.json");
-        try {
-            FileWriter w = new FileWriter(f);
-            w.write(Json);
-            w.close();
-            Log.d("Manager","Stuff serialized created");
-        }
-        catch (IOException e){
-            Log.d("kek",e.getMessage());
-        }
-    }
     public Stuff generate(int studAmount, int listenersAmount, int course) throws EduException
     {
         ArrayList<Person> temp = new ArrayList<Person>();
@@ -176,28 +138,27 @@ public class Manager implements IAction {
         return sum;
     }
 
-    Comparator<Person> compare = (o1,o2) -> {return compare(o1.Year, o2.Year);};
+    public static ArrayList<Person> bubbleSort(ArrayList<Person> arr) throws EduException{
+    /*Внешний цикл каждый раз сокращает фрагмент массива,
+      так как внутренний цикл каждый раз ставит в конец
+      фрагмента максимальный элемент*/
+        for(int i = arr.size()-1 ; i > 0 ; i--){
+            for(int j = 0 ; j < i ; j++){
 
-    public Stuff sortByYear(Stuff course) throws EduException
-    {
-        Stuff sortedStuff = course;
-        int c =0;
-        int temp;
-        while(c!=0) {
-            for (int i = 0; i <sortedStuff.studlist.size(); i++) {
-                if(compare(sortedStuff.studlist.get(i).Year,sortedStuff.studlist.get(i+1).Year)<0)
-                {
-                    c=0;
-                    temp = sortedStuff.studlist.get(i).Year;
-                    sortedStuff.studlist.get(i).Year = sortedStuff.studlist.get(i+1).Year;
-                    sortedStuff.studlist.get(i+1).Year = temp;
-                }
-                else c=1;
+            if( arr.get(j).Year > arr.get(j+1).Year ){
+                int tmp = arr.get(j).Year;
+                arr.get(j).Year = arr.get(j+1).Year;
+                arr.get(j+1).Year = tmp;
             }
         }
-        Log.d("Manager","Sorted by year");
-        return sortedStuff;
+
     }
+        Log.d("Manager","Sorted by year");
+        return arr;
+}
+    Comparator<Person> compare = (o1,o2) -> {return compare(o1.Year, o2.Year);};
+
+
     private static int getRandomNumberInRange(int min, int max) {
 
         if (min >= max) {

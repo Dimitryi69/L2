@@ -52,6 +52,9 @@ public class MainActivity extends AppCompatActivity {
             Log.d("studlist: ", "Size: "+ firstStuff.studlist.size());
             firstStuff = man.createCourse(f);
             firstStuff.toString();
+            Log.d("Inf","---------------------------------------------------------------");
+            firstStuff.studlist = Manager.bubbleSort(firstStuff.studlist);
+            firstStuff.toString();
 
         }
         catch (EduException e) {
