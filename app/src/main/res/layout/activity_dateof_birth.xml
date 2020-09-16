@@ -18,8 +18,43 @@
             android:text="Date of birth"
             android:textSize="24sp" />
 
+        <TextView
+            android:id="@+id/textView6"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Day"
+            android:textSize="24sp" />
+
         <EditText
-            android:id="@+id/editText4"
+            android:id="@+id/Textday"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:inputType="date" />
+
+        <TextView
+            android:id="@+id/textView8"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Mounth"
+            android:textSize="24sp" />
+
+        <EditText
+            android:id="@+id/Textmounth"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:inputType="date" />
+
+        <TextView
+            android:id="@+id/textView9"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Year"
+            android:textSize="24sp" />
+
+        <EditText
+            android:id="@+id/Textyear"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
@@ -35,6 +70,7 @@
                 android:id="@+id/button4"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:onClick="OnClickDate"
                 android:text="Next" />
 
         </LinearLayout>
