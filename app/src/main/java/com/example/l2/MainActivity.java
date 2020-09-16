@@ -35,7 +35,6 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-
         Stuff firstStuff = new Stuff();
         Manager man = new Manager("Alexander");
         try {
@@ -71,6 +70,7 @@ public class MainActivity extends AppCompatActivity {
         Random rnd = new Random();
         Log.d("Optional: ", "OrElseGet: "+min.orElseGet(()->rnd.nextInt(100)));
     }
+
     public void OnClick1(View view)
     {
         RadioButton RadioListener = findViewById(R.id.lis);

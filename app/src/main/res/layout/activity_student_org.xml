@@ -14,7 +14,7 @@
         tools:layout_editor_absoluteY="-285dp">
 
         <Spinner
-            android:id="@+id/spinner2"
+            android:id="@+id/Textcourse"
             android:layout_width="match_parent"
             android:layout_height="56dp" />
 
@@ -28,6 +28,7 @@
                 android:id="@+id/button4"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:onClick="OnClickCourse"
                 android:text="Next" />
 
         </LinearLayout>

@@ -12,9 +12,7 @@ import java.util.Date;
 
 public class DateofBirth extends AppCompatActivity {
 
-    EditText day = findViewById(R.id.Textday);
-    EditText mounth = findViewById(R.id.Textmounth);
-    EditText year = findViewById(R.id.Textyear);
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -22,11 +20,14 @@ public class DateofBirth extends AppCompatActivity {
     }
     public void OnClickDate(View view)
     {
+        EditText day = findViewById(R.id.Textday);
+        EditText mounth = findViewById(R.id.Textmounth);
+        EditText year = findViewById(R.id.Textyear);
         Bundle arguments = getIntent().getExtras();
         String UnitType = arguments.get("UnitType").toString();
         String Fullname = arguments.get("Fullname").toString();
 
-        if(UnitType=="Listener")
+        if(UnitType.equals("Listener"))
         {
             Intent intent = new Intent(this, Register.class);
             intent.putExtra("UnitType", UnitType);
