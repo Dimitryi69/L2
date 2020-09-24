@@ -138,14 +138,10 @@ public class Manager implements IAction {
         return sum;
     }
 
-    public static ArrayList<Person> bubbleSort(ArrayList<Person> arr) throws EduException{
-    /*Внешний цикл каждый раз сокращает фрагмент массива,
-      так как внутренний цикл каждый раз ставит в конец
-      фрагмента максимальный элемент*/
+    public ArrayList<Person> bubbleSort(ArrayList<Person> arr) throws EduException{
         for(int i = arr.size()-1 ; i > 0 ; i--){
             for(int j = 0 ; j < i ; j++){
-
-            if( arr.get(j).Year > arr.get(j+1).Year ){
+                if( this.compare.compare(arr.get(j), arr.get(j+1))==1 ){
                 int tmp = arr.get(j).Year;
                 arr.get(j).Year = arr.get(j+1).Year;
                 arr.get(j+1).Year = tmp;

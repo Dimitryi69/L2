@@ -53,7 +53,7 @@ public class MainActivity extends AppCompatActivity {
             firstStuff = man.createCourse(f);
             firstStuff.toString();
             Log.d("Inf","---------------------------------------------------------------");
-            firstStuff.studlist = Manager.bubbleSort(firstStuff.studlist);
+            firstStuff.studlist = man.bubbleSort(firstStuff.studlist);
             firstStuff.toString();
 
         }

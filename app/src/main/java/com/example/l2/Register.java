@@ -78,24 +78,24 @@ public class Register extends AppCompatActivity {
     public void Save(View view) {
         CheckBox check = findViewById(R.id.yes);
         CheckBox check1 = findViewById(R.id.yes2);
+        Bundle arguments = getIntent().getExtras();
+        String UnitTyper = arguments.get("UnitType").toString();
         if (check.isChecked() || check1.isChecked())
         {
-            Bundle arguments = getIntent().getExtras();
-        String UnitTyper = arguments.get("UnitType").toString();
-        TextView FullName = findViewById(R.id.name);
-        TextView Date = findViewById(R.id.DOB);
-        TextView UnitType = findViewById(R.id.Unit);
-        TextView Course = findViewById(R.id.Textcourse);
-        TextView Org = findViewById(R.id.textorg);
-        String Fullname = arguments.get("FullName").toString();
-        String day = arguments.get("Day").toString();
-        String mounth = arguments.get("Mounth").toString();
-        String year = arguments.get("Year").toString();
-        String course = arguments.get("Course").toString();
-        String org = arguments.get("Org").toString();
-
         if (UnitTyper.equals("Student")) {
+            TextView FullName = findViewById(R.id.name);
+            TextView Date = findViewById(R.id.DOB);
+            TextView UnitType = findViewById(R.id.Unit);
+            TextView Course = findViewById(R.id.Textcourse);
+            TextView Org = findViewById(R.id.textorg);
+            String Fullname = arguments.get("FullName").toString();
+            String day = arguments.get("Day").toString();
+            String mounth = arguments.get("Mounth").toString();
+            String year = arguments.get("Year").toString();
+            String course = arguments.get("Course").toString();
+            String org = arguments.get("Org").toString();
             Student stud = new Student();
+            stud.UnitType="Student";
             stud.Course = Integer.parseInt(course);
             stud.Year = Integer.parseInt(year);
             stud.Day = Integer.parseInt(day);
@@ -107,8 +107,17 @@ public class Register extends AppCompatActivity {
                 saveStudentsJson(stud, f);
             } catch (EduException e) {
             }
+
         } else {
+            TextView FullName = findViewById(R.id.name);
+            TextView Date = findViewById(R.id.DOB);
+            TextView UnitType = findViewById(R.id.Unit);
+            String Fullname = arguments.get("FullName").toString();
+            String day = arguments.get("Day").toString();
+            String mounth = arguments.get("Mounth").toString();
+            String year = arguments.get("Year").toString();
             Listener listener = new Listener();
+            listener.UnitType = "Listener";
             listener.Year = Integer.parseInt(year);
             listener.Day = Integer.parseInt(day);
             listener.Mounth = Integer.parseInt(mounth);

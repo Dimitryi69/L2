@@ -6,10 +6,34 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.TextView;
 
 public class NameInput extends AppCompatActivity {
 
 
+    String n = "undefined";
+    final static String Namevarkey = "NAME_VARIABLE";
+    final static String TextNamevarkey = "TEXT_VIEW";
+
+    @Override
+    protected void onSaveInstanceState(Bundle outState)
+    {
+        outState.putString(Namevarkey, n);
+        EditText NameView = findViewById(R.id.Textname);
+        outState.putString(TextNamevarkey, NameView.getText().toString());
+        super.onSaveInstanceState(outState);
+    }
+
+    @Override
+    protected void onRestoreInstanceState(Bundle savedInstanceState)
+    {
+        super.onRestoreInstanceState(savedInstanceState);
+        n = savedInstanceState.getString(TextNamevarkey);
+        String textTextView = savedInstanceState.getString(Namevarkey);
+        EditText e = findViewById(R.id.Textname);
+        e.setText(textTextView);
+
+    }
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
