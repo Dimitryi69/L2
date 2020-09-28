@@ -88,6 +88,14 @@
                         android:text="Register" />
 
                 </LinearLayout>
+
+                <TextView
+                    android:id="@+id/Inf"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Info:"
+                    android:textSize="24sp" />
+
             </LinearLayout>
         </LinearLayout>
     </ScrollView>

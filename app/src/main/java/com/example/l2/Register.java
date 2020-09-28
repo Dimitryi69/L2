@@ -10,6 +10,7 @@ import android.view.View;
 import android.widget.CheckBox;
 import android.widget.TextView;
 
+import com.example.l2.EducationManager.Manager;
 import com.example.l2.Exception.EduException;
 import com.example.l2.Stuff.Stuff;
 import com.example.l2.Units.Listener;
@@ -23,6 +24,9 @@ import java.io.IOException;
 import java.time.Year;
 
 public class Register extends AppCompatActivity {
+
+    Manager m;
+    Stuff stuff;
 
     final String TAG ="Activity";
     @Override
@@ -59,6 +63,7 @@ public class Register extends AppCompatActivity {
             Course.setText("Course: Only for students");
             Org.setText("Organization: Only for Students");
 
+
         }
         else if(UnitTyper.equals("Student"))
         {
@@ -74,6 +79,9 @@ public class Register extends AppCompatActivity {
             Course.setText("Course: "+course);
             Org.setText("Organization: "+org);
         }
+
+        m = new Manager("Manager");
+        stuff = new Stuff();
     }
     public void Save(View view) {
         CheckBox check = findViewById(R.id.yes);
@@ -82,6 +90,26 @@ public class Register extends AppCompatActivity {
         String UnitTyper = arguments.get("UnitType").toString();
         if (check.isChecked() || check1.isChecked())
         {
+            File f = new File(getFilesDir(),"Students.txt") ;
+            File f1 = new File(getFilesDir(),"Listeners.txt") ;
+            try {
+                if (f.createNewFile())
+                    System.out.println("File created");
+                else
+                    System.out.println("File already exists");
+                if (f1.createNewFile())
+                    System.out.println("File created");
+                else
+                    System.out.println("File already exists");
+                stuff = m.createCourse(getFilesDir());
+            }
+            catch (IOException e)
+            {
+            }
+            catch (EduException e)
+            {
+            }
+
         if (UnitTyper.equals("Student")) {
             TextView FullName = findViewById(R.id.name);
             TextView Date = findViewById(R.id.DOB);
@@ -102,9 +130,10 @@ public class Register extends AppCompatActivity {
             stud.Mounth = Integer.parseInt(mounth);
             stud.FullName = Fullname;
             stud.org = org;
-            File f = getFilesDir();
+
             try {
-                saveStudentsJson(stud, f);
+                stuff.add(new Student(0, Integer.parseInt(course), org, Fullname, Integer.parseInt(day), Integer.parseInt(mounth),Integer.parseInt(year)));
+                m.save(stuff, getFilesDir());
             } catch (EduException e) {
             }
 
@@ -122,12 +151,17 @@ public class Register extends AppCompatActivity {
             listener.Day = Integer.parseInt(day);
             listener.Mounth = Integer.parseInt(mounth);
             listener.FullName = Fullname;
-            File f = getFilesDir();
+
+
             try {
-                saveStudentsJson(listener, f);
+                stuff.add(new Listener(0, 0, "Listener", Fullname, Integer.parseInt(day), Integer.parseInt(mounth), Integer.parseInt(year)));
+                m.save(stuff, getFilesDir());
             } catch (EduException e) {
             }
+
         }
+            TextView t = findViewById(R.id.Inf);
+            t.setText("Info: "+ stuff.toString());
     }
         else
         {
@@ -142,17 +176,5 @@ public class Register extends AppCompatActivity {
             ad.show();
         }
 
-    }
-    public void saveStudentsJson(Person p, File path) throws EduException {
-        Gson gson = new Gson();
-        File file = new File(path,"Person.json");
-        try {
-            try(FileWriter writer = new FileWriter(file,false)){
-                writer.write(gson.toJson(p));
-            }
-        } catch (IOException e) {
-            Log.d("Serial",e.getMessage());
-        }
-        System.out.println(file.exists());
     }
 }

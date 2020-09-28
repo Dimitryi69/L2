@@ -38,7 +38,10 @@ public class NameInput extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_name_input);
-
+        Bundle arguments = getIntent().getExtras();
+        String UnitType = arguments.get("UnitType").toString();
+        TextView inf = findViewById(R.id.Inf);
+        inf.setText("Info: "+ UnitType);
     }
 
     public void OnClickname(View view)

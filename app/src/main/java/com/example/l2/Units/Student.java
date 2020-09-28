@@ -25,17 +25,22 @@ public class Student extends Person {
     {
         this.Course = Course;
     }
-    public Student(int Mark, int course, Organizations g)
+    public Student(int Mark, int course, String g, String Fullname, int day, int mounth, int year)
     {
         mark = Mark;
         Course = course;
-        org = g.getOrg();
+        org = g;
+        UnitType ="Student";
+        FullName = Fullname;
+        Day = day;
+        Mounth = mounth;
+        Year = year;
         Log.d("Student ","Student " + FullName + " created");
     }
     @Override
     public String toString()
     {
-        return "Full Name: " + FullName + ", Org: " + org + ", Course: " + Course + ", Mark: " + mark + ", Year: "+ Year;
+        return "Unit Type: "+ UnitType+ ", Full Name: " + FullName + ", Org: " + org + ", Course: " + Course + ", Mark: " + mark + ", Year: "+ Year;
     }
     public Student(){}
 }

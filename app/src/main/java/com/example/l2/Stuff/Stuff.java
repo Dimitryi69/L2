@@ -60,7 +60,7 @@ public class Stuff {
         {
             CopyOnWriteArrayList<Student> ret = new CopyOnWriteArrayList<Student>();
             for (int i = 0; i < studlist.size() ; i++) {
-                if(studlist.get(i).UnitType == "Student")
+                if(studlist.get(i).UnitType.equals("Student") )
                 {
                     ret.add((Student) studlist.get(i));
                 }
@@ -76,7 +76,7 @@ public class Stuff {
         {
             CopyOnWriteArrayList<Listener> ret = new CopyOnWriteArrayList<Listener>();
             for (int i = 0; i < studlist.size() ; i++) {
-                if(studlist.get(i).UnitType == "Listener")
+                if(studlist.get(i).UnitType.equals("Listener"))
                 {
                     ret.add((Listener) studlist.get(i));
                 }

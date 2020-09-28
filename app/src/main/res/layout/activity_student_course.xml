@@ -27,7 +27,7 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:orientation="horizontal"
             android:textAlignment="center">
 
@@ -39,6 +39,13 @@
                 android:text="Next" />
 
         </LinearLayout>
+
+        <TextView
+            android:id="@+id/Inf"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Info:"
+            android:textSize="24sp" />
 
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -22,8 +22,13 @@ public class Listener extends Person {
         Rating = rate;
     }
 
-    public Listener(int courses, int rate)
+    public Listener(int courses, int rate, String Un, String name, int d, int m, int y)
     {
+        UnitType = Un;
+        FullName = name;
+        Day = d;
+        Mounth = m;
+        Year = y;
         ListenedCourses = courses;
         Rating = rate;
         Log.d("Listener","Listener " + FullName + " created");
@@ -33,6 +38,6 @@ public class Listener extends Person {
     @Override
     public String toString()
     {
-        return "Listened Course: "+ListenedCourses + ", Rating: " + Rating + ", Name: " + FullName + ", Year: "+Year;
+        return "Unit Type: "+"Listener, "+"Listened Course: "+ListenedCourses + ", Rating: " + Rating + ", Name: " + FullName + ", Year: "+Year;
     }
 }

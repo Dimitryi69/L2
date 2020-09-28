@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.TextView;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -17,6 +18,11 @@ public class DateofBirth extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_dateof_birth);
+        Bundle arguments = getIntent().getExtras();
+        String UnitType = arguments.get("UnitType").toString();
+        String Fullname = arguments.get("Fullname").toString();
+        TextView inf = findViewById(R.id.Inf);
+        inf.setText("Info: "+ UnitType+", "+ Fullname);
     }
     public void OnClickDate(View view)
     {
@@ -39,12 +45,15 @@ public class DateofBirth extends AppCompatActivity {
         }
         else
         {
+            String Day = day.getText().toString();
+            String Mounth = mounth.getText().toString();
+            String Year = year.getText().toString();
             Intent intent = new Intent(this, StudentCourse.class);
             intent.putExtra("UnitType", UnitType);
             intent.putExtra("FullName", Fullname);
-            intent.putExtra("Day", day.getText().toString());
-            intent.putExtra("Mounth", mounth.getText().toString());
-            intent.putExtra("Year", year.getText().toString());
+            intent.putExtra("Day", Day);
+            intent.putExtra("Mounth", Mounth);
+            intent.putExtra("Year", Year);
             startActivity(intent);
         }
 

@@ -47,5 +47,33 @@
 
         </RadioGroup>
 
+        <Button
+            android:id="@+id/mail"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="onClick4"
+            android:text="E-mail" />
+
+        <Button
+            android:id="@+id/cam"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="onClick6"
+            android:text="Camera capture" />
+
+        <Button
+            android:id="@+id/phone"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="OnClick2"
+            android:text="+375447395190" />
+
+        <Button
+            android:id="@+id/vk"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="OnClick3"
+            android:text="vk" />
+
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

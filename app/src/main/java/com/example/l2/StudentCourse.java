@@ -10,6 +10,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
+import android.widget.TextView;
 
 public class StudentCourse extends AppCompatActivity {
 
@@ -21,6 +22,16 @@ public class StudentCourse extends AppCompatActivity {
         ArrayAdapter<?> adapter = ArrayAdapter.createFromResource(this, R.array.courses, android.R.layout.simple_spinner_item);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_item);
         spinner.setAdapter(adapter);
+
+        Bundle arguments = getIntent().getExtras();
+        String UnitType = arguments.get("UnitType").toString();
+        String Fullname = arguments.get("FullName").toString();
+        String day = arguments.get("Day").toString();
+        String mounth = arguments.get("Mounth").toString();
+        String year = arguments.get("Year").toString();
+        String date = day+"."+mounth+"."+year;
+        TextView inf = findViewById(R.id.Inf);
+        inf.setText("Info: "+ UnitType+", "+ Fullname+ ", "+date);
     }
     public void OnClickCourse(View view)
     {

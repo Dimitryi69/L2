@@ -6,7 +6,9 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.location.Address;
+import android.net.Uri;
 import android.os.Bundle;
+import android.provider.MediaStore;
 import android.util.Log;
 import android.view.View;
 import android.widget.RadioButton;
@@ -15,6 +17,7 @@ import android.widget.RadioGroup;
 import com.example.l2.EducationManager.IAction;
 import com.example.l2.EducationManager.Manager;
 import com.example.l2.Exception.EduException;
+import com.example.l2.Organization.Organizations;
 import com.example.l2.Stuff.Course;
 import com.example.l2.Stuff.Stuff;
 import com.example.l2.Units.Person;
@@ -28,6 +31,8 @@ import java.util.Arrays;
 import java.util.Optional;
 import java.util.Random;
 
+import static java.net.Proxy.Type.HTTP;
+
 public class MainActivity extends AppCompatActivity {
 
     @Override
@@ -35,43 +40,44 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        Stuff firstStuff = new Stuff();
-        Manager man = new Manager("Alexander");
-        try {
-            firstStuff = man.generate(15, 15, 2);
-            firstStuff.toString();
-        } catch (EduException e) {
-            e.printStackTrace();
-        }
-        man.Version(firstStuff);
-        File f = getFilesDir();
-        try
-        {
-            man.save(firstStuff, f);
-            firstStuff.studlist = new ArrayList<Person>();
-            Log.d("studlist: ", "Size: "+ firstStuff.studlist.size());
-            firstStuff = man.createCourse(f);
-            firstStuff.toString();
-            Log.d("Inf","---------------------------------------------------------------");
-            firstStuff.studlist = man.bubbleSort(firstStuff.studlist);
-            firstStuff.toString();
+//        Stuff firstStuff = new Stuff();
+//        Manager man = new Manager("Alexander");
+//        File f = getFilesDir();
+//        Student st = new Student(7, 2, Organizations.GloruHL, "First stud", 8, 2, 1997);
+//        Student st1 = new Student(7, 2, Organizations.GloruHL, "Second stud", 8, 2, 1997);
 
-        }
-        catch (EduException e) {
-            e.printStackTrace();
-        }
-        ////////Optional---------------------
-        ArrayList<Integer> numbers = new ArrayList<Integer>();
-        Optional<Integer> min = numbers.stream().min(Integer::compare);
-        Log.d("Optional empty: ", "OrElse: "+min.orElse(-1));
-        numbers.addAll(Arrays.asList(new Integer[]{4,5,6,7,8,9}));
-        min = numbers.stream().min(Integer::compare);
-        Log.d("Optional empty: ", "OrElse: "+min.orElse(-1));
+    }
 
-        numbers = new ArrayList<Integer>();
-        min = numbers.stream().min(Integer::compare);
-        Random rnd = new Random();
-        Log.d("Optional: ", "OrElseGet: "+min.orElseGet(()->rnd.nextInt(100)));
+    static final int REQUEST_IMAGE_CAPTURE = 1;
+
+    public void onClick6(View view) {
+        Intent takePictureIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+        if (takePictureIntent.resolveActivity(getPackageManager()) != null) {
+            startActivityForResult(takePictureIntent, REQUEST_IMAGE_CAPTURE);
+        }
+    }
+
+    public void OnClick2(View view)
+    {
+        Uri number = Uri.parse("tel:+375447395190");
+        Intent callIntent = new Intent(Intent.ACTION_DIAL, number);
+        startActivity(callIntent);
+    }
+
+    public void OnClick3(View view)
+    {
+        Uri webpage = Uri.parse("https://vk.com/d.chaley");
+        Intent webIntent = new Intent(Intent.ACTION_VIEW, webpage);
+        startActivity(webIntent);
+    }
+    public void onClick4(View view)
+    {
+        Intent emailIntent = new Intent(Intent.ACTION_SEND);
+        emailIntent.setType("text/plain");
+        emailIntent.putExtra(Intent.EXTRA_EMAIL, new String[] {"d.chaley@mail.ru"}); // recipients
+        emailIntent.putExtra(Intent.EXTRA_SUBJECT, "Email subject");
+        emailIntent.putExtra(Intent.EXTRA_TEXT, "Email message text");
+        startActivity(emailIntent);
     }
 
     public void OnClick1(View view)

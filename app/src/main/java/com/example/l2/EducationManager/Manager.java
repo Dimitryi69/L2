@@ -214,6 +214,7 @@ public class Manager implements IAction {
         File studentsFile = new File(path,"Students.txt");
         File listenersFile = new File(path,"Listeners.txt");
 
+
         try {
             try(FileReader reader = new FileReader(studentsFile)){
                 String g = path.getPath()+"/Students.txt";
@@ -231,8 +232,15 @@ public class Manager implements IAction {
         } catch (IOException e) {
             Log.d("Serialize","Ошибка чтения");
         }
-        stuff.setStudentsList(readStudentsJson(studentsString));
-        stuff.setListenersList(readListenersJson(ListenersString));
+        if(!studentsString.isEmpty()) {
+            stuff.setStudentsList(readStudentsJson(studentsString));
+        }
+        else
+            stuff.Students = new CopyOnWriteArrayList<Student>();
+        if(!ListenersString.isEmpty())
+            stuff.setListenersList(readListenersJson(ListenersString));
+        else
+            stuff.Listeners = new CopyOnWriteArrayList<Listener>();
         stuff.mergeLists();
         Log.d("Read: ","Считан курс");
 
