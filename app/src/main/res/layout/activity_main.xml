@@ -58,7 +58,7 @@
             android:id="@+id/cam"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:onClick="onClick6"
+            android:onClick="buttonCameraOpen"
             android:text="Camera capture" />
 
         <Button
